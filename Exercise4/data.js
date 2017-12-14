@@ -1,7 +1,19 @@
+//Variables
+var lock1A = false;
+var keyNurse = false;
+var keyStorage = false;
+var keyTorch = false;
+var keyPower = false;
+var paperNurse = false;
+var paperStorage = false;
+var paper1A = false;
+var paperPower = false;
+var paperCount = 0;
+
 var roomArray = [
 	{
 		title:'???',
-		text:'You wake up in the dark, lying on what seems to be a hard surface. The air around you feels completely still, and the room is in complete silence. The back of your head feels faintly sore, as if you had hit it some time ago, but otherwise you seem fine.',
+		text:'You wake up in the dark, lying on what seems to be a hard surface. The air around you feels completely still, and the room is in complete silence. <br />The back of your head feels faintly sore, as if you had hit it some time ago, but otherwise you seem fine.',
 		choices:[
 			{
 				text:'Investigate your surroundings',
@@ -11,7 +23,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'As your eyes adjust to the darkness of the room, the surface you woke up on is revealed to be a wooden table. Investigating the room reveals it to be an empty classroom, full of tables and chairs pointing towards the teacher’s desk and blackboard at the front of the room. You can also see a cupboard in one corner of the room, and a door that looks to lead out into a corridor.',
+		text:'As your eyes adjust to the darkness of the room, the surface you woke up on is revealed to be a wooden table. <br />Investigating the room reveals it to be an empty classroom, full of tables and chairs pointing towards the teacher’s desk and blackboard at the front of the room. You can also see a cupboard in one corner of the room, and a door that looks to lead out into a corridor.',
 		choices:[
 			{
 				text:'Investigate the tables and chairs',
@@ -33,7 +45,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'Judging by the size of the chairs and tables with the room, it appears to belong to a primary school. You can see that they are fairly old, but have been kept in mostly good shape.',
+		text:'Judging by the size of the chairs and tables with the room, it appears to belong to a primary school. <br />You can see that they are fairly old, but have been kept in mostly good shape.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -43,7 +55,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'You go over to the cupboard and attempt to open it, but find it to be locked. Further investigation shows that there is a small keyhole on one of the doors.',
+		text:'You go over to the cupboard and attempt to open it, but find it to be locked. <br />Further investigation shows that there is a small keyhole on one of the doors.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -67,7 +79,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'Searching the desk, you find stacks of teaching materials and homework hand-ins for various subjects. However, nothing here stands out as being any use to you.',
+		text:'Searching the desk, you find stacks of teaching materials and homework hand-ins for various subjects. <br />However, nothing here stands out as being any use to you.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -77,7 +89,7 @@ var roomArray = [
 	},
 	{
 		title:'Lower Corridor A',
-		text:'You enter the darkly-lit corridor connecting classrooms together. Windows facing the outside of the school are all nailed shut with wooden planks, with the exception of one, which you notice has a few planks missing. Each classroom appears to be labelled, with the room you woke in being ‘1B’. From here, you should be able to enter rooms ‘1A’, ‘1B’ and ‘1C’, or proceed further down the corridor.',
+		text:'You enter the darkly-lit corridor connecting classrooms together. <br />Windows facing the outside of the school are all nailed shut with wooden planks, with the exception of one, which you notice has a few planks missing. <br />Each classroom appears to be labelled, with the room you woke in being ‘1B’. From here, you should be able to enter rooms ‘1A’, ‘1B’ and ‘1C’, or proceed further down the corridor.',
 		choices:[
 			{
 				text:'Enter Room 1A',
@@ -89,7 +101,7 @@ var roomArray = [
 			},
 			{
 				text:'Enter Room 1C',
-				index:12
+				index:13
 			},
 			{
 				text:'Examine the window',
@@ -103,7 +115,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1A (7)',
-		text:'You enter the classroom marked ‘1A’. The layout of this room looks to be almost identical to the room you woke up in, however you notice this room does not have a cupboard, and generally seems to be in a worse condition, with some of the desks having been smashed.',
+		text:'You enter the classroom marked ‘1A’. <br />The layout of this room looks to be almost identical to the room you woke up in, however you notice this room does not have a cupboard, and generally seems to be in a worse condition, with some of the desks having been smashed.',
 		choices:[
 			{
 				text:'Examine the furniture',
@@ -125,7 +137,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1A (8)',
-		text:'The tables and chairs in this room appear to be from a primary school. Closer inspection reveals a bloodstain under one of the smashed desks.',
+		text:'The tables and chairs in this room appear to be from a primary school. <br />Closer inspection reveals a bloodstain under one of the smashed desks.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -135,7 +147,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1A(9)',
-		text:'The windows in this room all appear sealed shut with wooden planks. No light shines through, and there are no other visible sources of light in the room, however this and the other rooms remain dimly lit.',
+		text:'The windows in this room all appear sealed shut with wooden planks. <br />No light shines through, and there are no other visible sources of light in the room, however this and the other rooms remain dimly lit.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -145,7 +157,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1A(10)',
-		text:'Investigating the teacher’s desk, you find a key lying on top of a registration sheet. The key is labelled ‘Nurse’s Office’. Upon picking up the key, you start to hear a scratching sound coming from the blackboard behind you.',
+		text:'Investigating the teacher’s desk, you find a key lying on top of a registration sheet. <br />The key is labelled ‘Nurse’s Office’. Upon picking up the key, you start to hear a scratching sound coming from the blackboard behind you.',
 		choices:[
 			{
 				text:'Check the blackboard',
@@ -169,7 +181,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1A(12)',
-		text:'You turn away from the blackboard and continue to investigate the room. As you do, the space around you seems to violently distort, and you find yourself in a pitch-black space, looking directly at what appears to be the ghost of a young girl. The girls seems familiar to you somehow, but you are unable to identify either who she is or the connection between you. As you think about this, the space starts to turn red, and you can feel the back of your head bleeding rapidly. The last thing you get to see before you pass out is the figure of the ghost blankly staring at you. GAME OVER',
+		text:'You turn away from the blackboard and continue to investigate the room. <br />As you do, the space around you seems to violently distort, and you find yourself in a pitch-black space, looking directly at what appears to be the ghost of a young girl. <br />The girl seems familiar to you somehow, but you are unable to identify either who she is or the connection between you. <br />As you think about this, the space starts to turn red, and you can feel the back of your head bleeding rapidly. <br />The last thing you get to see before you pass out is the figure of the ghost blankly staring at you. GAME OVER',
 		choices:[
 			{
 				text:'Retry',
@@ -243,6 +255,50 @@ var roomArray = [
 				text:'Open the curtain',
 				index:17
 			},
+			{
+				text:'Return to Room',
+				index:15
+			}
+		]
+	},
+	{
+		title:"Nurse's Room (17)",
+		text:'Opening the curtain, you find with some relief that the bed was not holding a person. Instead, you find a long, solid metal tube, with one end of it stained just like the curtain. Upon seeing this, you feel that your light headache has become slightly worse.',
+		choices:[
+			{
+				text:'Return to Room',
+				index:15
+			}
+		]
+	},
+	{
+		title:"Nurse's Room (18)",
+		text:'You search the desk, skimming through the stored medical records. Underneath one entry, you find a small key.',
+		choices:[
+			{
+				text:"Continue Searching",
+				index:19
+			},
+			{
+				text:'Return to Room',
+				index:15
+			}
+		]
+	},
+	{
+		title:"Nurse's Room (19)",
+		text:"You carry on searching through the nurse's desk, eventually coming across what seems to be a ripped-out diary entry. The paper is in rough condition, causing many of the words to be completely unidentifiable.",
+		choices:[
+			{
+				text:'Return to Room',
+				index:15
+			}
+		]
+	},
+	{
+		title:"Nurse's Room",
+		text:"The cupboard is locked",
+		choices:[
 			{
 				text:'Return to Room',
 				index:15

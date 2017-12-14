@@ -1,23 +1,14 @@
 @font-face {
-    font-family: DarkBlack;
-    src: url(DarkBlackD.otf);
+    font-family: typewriter;
+    src: url(veterantypewriter.ttf);
 }
 @font-face{
-    font-family: Raven;
-    src: url(RavenSong.otf);
+    font-family: cotd;
+    src: url(cotd.otf);
 }
 
-h3 {
-    text-align: center;
-    font-family: Raven;
-    font-weight: normal;
-}
-p{
-    text-align: center;
-    font-family: DarkBlack;
-}
 #button{
-    margin: 2% auto;
+    margin: 10px;
     border-radius: 5px;
     text-align: center;
     padding: 4px;
@@ -29,5 +20,77 @@ p{
 }
 #roomChoices
 {
+    height: 75px;
+    width: 900px;
+    float: left;
+    background-color: grey;
+    background-image: url(images/board2.png);
     text-align: center;
+    background-size: 100%
+}
+body{
+  background-image: url("images/static.png");
+  background-color: LightGrey;
+
+}
+#container{
+  width: 900px;
+  height: 1500px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+#roomTitle{
+    width: 900px;
+    height: 100px;
+    vertical-align: middle;
+    line-height: 100px;
+    text-align: center;
+    font-family: cotd;
+    font-weight: normal;
+    font-size: 50px;
+    background-color: red;
+    background-image: url("images/header.jpg");
+    color: white;
+}
+
+#roomImage{
+  height: 500px;
+  width: 700px;
+  float: left;
+  transition-duration: 0.4s;
+  background-color: blue;
+}
+
+#invScreen{
+  height: 400px;
+  width: 200px;
+  float: right;
+  background-image: url(images/inv0.png);
+  background-color: green;
+  transition-duration: 0.4s;
+}
+
+#paperScreen{
+  height: 100px;
+  width: 200px;
+  float: right;
+  background-color: orange;
+  background-image: url("images/paper0.png");
+}
+
+#roomText{
+  width: 880px;
+  height: 216px;
+  text-align: center;
+  font-family: typewriter;
+  font-size: 20px;
+  background-color: black;
+  float: left;
+  color: white;
+  padding: 10px;
+  background-image: url(images/board1.png);
+  background-size: 100%;
+  transition-duration: 0.4s;
+
 }
