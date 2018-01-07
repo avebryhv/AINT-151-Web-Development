@@ -76,7 +76,7 @@ function RoomCheck(roomIndex)
 
 		case 1:
 		case 13:
-			document.getElementById('roomImage').style.backgroundImage = "url(images/class.jpg)";			
+			document.getElementById('roomImage').style.backgroundImage = "url(images/class.jpg)";
 			break;
 
 		case 3:
@@ -89,10 +89,7 @@ function RoomCheck(roomIndex)
 			break;
 
 		case 6:
-			document.getElementById('roomImage').style.backgroundImage = "url(images/corridor.jpg)";
-			var audio = new Audio("sounds/wind.wav");
-
-			audio.play();
+			document.getElementById('roomImage').style.backgroundImage = "url(images/corridor.jpg)";			
 			break;
 
 		case 7:
