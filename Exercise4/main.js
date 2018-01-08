@@ -17,6 +17,7 @@ function SelectRoom(roomIndex)
 }
 
 function PaperGet(){
+	paper.play();
 	paperCount++;
 	switch (paperCount) {
 		case 1:
@@ -72,9 +73,15 @@ function RoomCheck(roomIndex)
 				document.getElementById('roomTitle').innerHTML = "Name Required";
 				document.getElementById('roomText').innerHTML = "Please enter a name using the Setup tab before playing the game";
 			}
+
+			bgm.loop = true;
+			bgm.volume = 0;
+			bgm.play();
+
 			break;
 
 		case 1:
+			bgm.volume=1;
 		case 13:
 			document.getElementById('roomImage').style.backgroundImage = "url(images/class.jpg)";
 			break;
@@ -89,7 +96,10 @@ function RoomCheck(roomIndex)
 			break;
 
 		case 6:
-			document.getElementById('roomImage').style.backgroundImage = "url(images/corridor.jpg)";			
+			document.getElementById('roomImage').style.backgroundImage = "url(images/corridor.jpg)";
+			bgm.volume=1;
+			bgm2.pause();
+			wind.pause();
 			break;
 
 		case 7:
@@ -118,6 +128,7 @@ function RoomCheck(roomIndex)
 			case 10:
 				keyNurse = true;
 				document.getElementById('invScreen').style.backgroundImage = "url(images/inv1.png)";
+				pickup.play();
 				break;
 			case 11:
 				state1A = 1;
@@ -128,9 +139,11 @@ function RoomCheck(roomIndex)
 			case 23:
 			case 28:
 			case 38:
-			case 49:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/badEnd.png)";
+				bgm.pause();
 				break;
+
+
 
 			case 14:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/corridor.jpg)";
@@ -157,6 +170,7 @@ function RoomCheck(roomIndex)
 					document.getElementById('roomChoices').innerHTML += roomchoice;
 				}
 				else {
+					pickup.play();
 					keyStorage = true;
 					document.getElementById('invScreen').style.backgroundImage = "url(images/inv2.png)";
 				}
@@ -188,13 +202,17 @@ function RoomCheck(roomIndex)
 				var roomchoice = "<button type='button' id='button' onClick=SelectRoom(21)>" + "Return";
 				document.getElementById('roomChoices').innerHTML += roomchoice;
 			}else {
+				pickup.play();
 				keyTorch = true;
 				document.getElementById('invScreen').style.backgroundImage = "url(images/inv3.png)";
 			}
 				break;
 
 			case 24:
-				if (keyTorch) {
+				if (keyPower) {
+					SelectRoom(64);
+				}
+				else if (keyTorch) {
 					SelectRoom(26);
 				}else {
 					document.getElementById('roomImage').style.backgroundImage = "url(images/black.png)";
@@ -206,7 +224,14 @@ function RoomCheck(roomIndex)
 				break;
 
 			case 26:
+			case 64:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/black.png)";
+				break;
+
+			case 30:
+				wind.loop=true;
+				wind.volume=1;
+				wind.play();
 				break;
 
 			case 32:
@@ -218,6 +243,7 @@ function RoomCheck(roomIndex)
 			break;
 
 			case 41:
+				wind.play();
 				if (paper1A == true) {
 					document.getElementById('roomChoices').innerHTML = "";
 					document.getElementById('roomTitle').innerHTML = "Music Room";
@@ -230,6 +256,7 @@ function RoomCheck(roomIndex)
 				break;
 
 			case 48:
+			pickup.play();
 				keyPower = true;
 				document.getElementById('invScreen').style.backgroundImage = "url(images/inv4.png)";
 				break;
@@ -246,6 +273,21 @@ function RoomCheck(roomIndex)
 
 			case 40:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/musicRoom.png)";
+				bgm.volume = 1;
+				bgm2.pause();
+				wind.pause();
+				break;
+
+			case 44:
+				bgm.volume = 0;
+				bgm2.loop=true;
+				bgm2.play();
+				break;
+
+			case 49:
+				document.getElementById('roomImage').style.backgroundImage = "url(images/badEnd.png)";
+				pianoBad.play();
+				bgm.pause();
 				break;
 
 			case 51:
@@ -273,6 +315,9 @@ function RoomCheck(roomIndex)
 
 			case 55:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/classAlt.png)";
+				bgm.volume = 0;
+				bgm2.loop=true;
+				bgm2.play();
 				break;
 
 			case 59:

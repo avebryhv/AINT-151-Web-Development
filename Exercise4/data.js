@@ -1,4 +1,4 @@
-//Variables
+//Flag Variables
 var state1A = 0;
 var keyNurse = false;
 var keyStorage = false;
@@ -10,11 +10,20 @@ var paper1A = false;
 var paperPower = false;
 var paperCount = 0;
 var playerName = "";
+//Audio Variables
+var bgm = new Audio("sounds/bgm.wav");
+var bgm2 = new Audio("sounds/bgm2.wav");
+var wind = new Audio("sounds/wind.wav");
+var pickup = new Audio("sounds/pickup.wav");
+var paper = new Audio("sounds/paper.wav");
+var pianoBad = new Audio("sounds/pianoBad.wav");
+
+
 
 var roomArray = [
 	{
 		title:'???',
-		text:'You wake up in the dark, lying on what seems to be a hard surface. The air around you feels completely still, and the room is in complete silence. <br />The back of your head feels faintly sore, as if you had hit it some time ago, but otherwise you seem fine.',
+		text:'You wake up in the dark, lying on what seems to be a hard surface. The air around you feels completely still, and the room is in complete silence. The back of your head feels faintly sore, as if you had hit it some time ago, but otherwise you seem fine.',
 		choices:[
 			{
 				text:'Investigate your surroundings',
@@ -24,7 +33,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'As your eyes adjust to the darkness of the room, the surface you woke up on is revealed to be a wooden table. <br />Investigating the room reveals it to be an empty classroom, full of tables and chairs pointing towards the teacher’s desk and blackboard at the front of the room. You can also see a cupboard in one corner of the room, and a door that looks to lead out into a corridor.',
+		text:'As your eyes adjust to the darkness of the room, the surface you woke up on is revealed to be a wooden table. Investigating the room reveals it to be an empty classroom, full of tables and chairs pointing towards the teacher’s desk and blackboard at the front of the room. You can also see a cupboard in one corner of the room, and a door that looks to lead out into a corridor.',
 		choices:[
 			{
 				text:'Investigate the tables and chairs',
@@ -46,7 +55,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'Judging by the size of the chairs and tables with the room, it appears to belong to a primary school. <br />You can see that they are fairly old, but have been kept in mostly good shape.',
+		text:'Judging by the size of the chairs and tables with the room, it appears to belong to a primary school. You can see that they are fairly old, but have been kept in mostly good shape.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -56,7 +65,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'You go over to the cupboard and attempt to open it, but find it to be locked. <br />Further investigation shows that there is a small keyhole on one of the doors.',
+		text:'You go over to the cupboard and attempt to open it, but find it to be locked. Further investigation shows that there is a small keyhole on one of the doors.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -80,7 +89,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1B',
-		text:'Searching the desk, you find stacks of teaching materials and homework hand-ins for various subjects. <br />However, nothing here stands out as being any use to you.',
+		text:'Searching the desk, you find stacks of teaching materials and homework hand-ins for various subjects. However, nothing here stands out as being any use to you.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -90,7 +99,7 @@ var roomArray = [
 	},
 	{
 		title:'Lower Corridor A',
-		text:'You enter the darkly-lit corridor connecting classrooms together. <br />Windows facing the outside of the school are all nailed shut with wooden planks, with the exception of one, which you notice has a few planks missing. <br />Each classroom appears to be labelled, with the room you woke in being ‘1B’. From here, you should be able to enter rooms ‘1A’, ‘1B’ and ‘1C’, or proceed further down the corridor.',
+		text:'You enter the darkly-lit corridor connecting classrooms together. Windows facing the outside of the school are all nailed shut with wooden planks, with the exception of one, which you notice has a few planks missing. Each classroom appears to be labelled, with the room you woke in being ‘1B’. From here, you should be able to enter rooms ‘1A’, ‘1B’ and ‘1C’, or proceed further down the corridor.',
 		choices:[
 			{
 				text:'Enter Room 1A',
@@ -115,8 +124,8 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Classroom 1A (7)',
-		text:'You enter the classroom marked ‘1A’. <br />The layout of this room looks to be almost identical to the room you woke up in, however you notice this room does not have a cupboard, and generally seems to be in a worse condition, with some of the desks having been smashed.',
+		title:'Classroom 1A',
+		text:'You enter the classroom marked ‘1A’. The layout of this room looks to be almost identical to the room you woke up in, however you notice this room does not have a cupboard, and generally seems to be in a worse condition, with some of the desks having been smashed.',
 		choices:[
 			{
 				text:'Examine the furniture',
@@ -137,8 +146,8 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Classroom 1A (8)',
-		text:'The tables and chairs in this room appear to be from a primary school. <br />Closer inspection reveals a bloodstain under one of the smashed desks.',
+		title:'Classroom 1A',
+		text:'The tables and chairs in this room appear to be from a primary school. Closer inspection reveals a bloodstain under one of the smashed desks.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -147,8 +156,8 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Classroom 1A(9)',
-		text:'The windows in this room all appear sealed shut with wooden planks. <br />No light shines through, and there are no other visible sources of light in the room, however this and the other rooms remain dimly lit.',
+		title:'Classroom 1A',
+		text:'The windows in this room all appear sealed shut with wooden planks. No light shines through, and there are no other visible sources of light in the room, however this and the other rooms remain dimly lit.',
 		choices:[
 			{
 				text:'Return to Room',
@@ -157,8 +166,8 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Classroom 1A(10)',
-		text:'Investigating the teacher’s desk, you find a key lying on top of a registration sheet. <br />The key is labelled ‘Nurse’s Office’. Upon picking up the key, you start to hear a scratching sound coming from the blackboard behind you.',
+		title:'Classroom 1A',
+		text:'Investigating the teacher’s desk, you find a key lying on top of a registration sheet. The key is labelled ‘Nurse’s Office’. Upon picking up the key, you start to hear a scratching sound coming from the blackboard behind you.',
 		choices:[
 			{
 				text:'Check the blackboard',
@@ -167,7 +176,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Classroom 1A(11)',
+		title:'Classroom 1A',
 		text:'You turn to face the blackboard, to see that the word ‘LEAVE’ is being scratched into the board.',
 		choices:[
 			{
@@ -181,8 +190,8 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Classroom 1A(12)',
-		text:'You turn away from the blackboard and continue to investigate the room. <br />As you do, the space around you seems to violently distort, and you find yourself in a pitch-black space, looking directly at what appears to be the ghost of a young girl. <br />The girl seems familiar to you somehow, but you are unable to identify either who she is or the connection between you. <br />As you think about this, the space starts to turn red, and you can feel the back of your head bleeding rapidly. <br />The last thing you get to see before you pass out is the figure of the ghost blankly staring at you. GAME OVER',
+		title:'Classroom 1A',
+		text:'You turn away from the blackboard and continue to investigate the room. As you do, the space around you seems to violently distort, and you find yourself in a pitch-black space, looking directly at what appears to be the ghost of a young girl. The girl seems familiar to you somehow, but you are unable to identify either who she is or the connection between you. As you think about this, the space starts to turn red, and you can feel the back of your head bleeding rapidly. The last thing you get to see before you pass out is the figure of the ghost blankly staring at you. GAME OVER',
 		choices:[
 			{
 				text:'Retry',
@@ -191,7 +200,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Classroom 1C(13)',
+		title:'Classroom 1C',
 		text:'You enter the classroom labelled ‘1C’. This room has the tables and chair piled around the edges of the room, leaving the centre empty, where you notice some kind of marking on the floor.',
 		choices:[
 			{
@@ -205,7 +214,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:'Lower Corridor B (14)',
+		title:'Lower Corridor B',
 		text:'You arrive in a connecting corridor. This one contains rooms marked ‘Nurse’s Office’ and ‘Power Room’. There are also a set of stairs that appear to lead to a second floor. At the end of the corridor, you see a pair of large doors that look like they could be the entrance to the school. However, these doors are locked tight by some kind of force.',
 		choices:[
 			{
@@ -227,7 +236,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Nurse's Room (15)",
+		title:"Nurse's Room",
 		text:'You enter the room marked ‘Nurse’s Room’. The first thing that catches your eye is what appears to be a bed, hidden by a curtain, in the far corner of the room. You can also see a desk, presumably belonging to the nurse, and a cupboard.',
 		choices:[
 			{
@@ -249,7 +258,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Nurse's Room (16)",
+		title:"Nurse's Room",
 		text:'Approaching the bed, you notice the the curtains are stained with a red fluid, presumably dried blood. Now that you can see the bed properly, there appears to be something in the bed, roughly the height of a child but much too thin to be one. Without opening the curtain, there is no way to identify the bed’s contents.',
 		choices:[
 			{
@@ -263,7 +272,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Nurse's Room (17)",
+		title:"Nurse's Room",
 		text:'Opening the curtain, you find with some relief that the bed was not holding a person. Instead, you find a long, solid metal tube, with one end of it stained just like the curtain. Upon seeing this, you feel that your light headache has become slightly worse.',
 		choices:[
 			{
@@ -273,7 +282,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Nurse's Room (18)",
+		title:"Nurse's Room",
 		text:'You search the desk, skimming through the stored medical records. Underneath one entry, you find a small key.',
 		choices:[
 			{
@@ -287,7 +296,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Nurse's Room (19)",
+		title:"Nurse's Room",
 		text:"You carry on searching through the nurse's desk, eventually coming across what seems to be a ripped-out diary entry. The paper is in rough condition, causing many of the words to be completely unidentifiable.",
 		choices:[
 			{
@@ -307,7 +316,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Storage Room (21)",
+		title:"Storage Room",
 		text:"The cupboard opens up to reveal a small storage room. Cardboard boxes and school supplies are piled around the corners of the room, with cut and ripped paper clippings scattered across the floor.",
 		choices:[
 			{
@@ -339,7 +348,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Storage Room(23)",
+		title:"Storage Room",
 		text:"You continue to search through the boxes, while attempting to ignore the fact that the back of your head is becoming unbearably painful. You come to the last box, opening it up to find a small, rusted knife. As soon as you see the knife, you feel the slightest bit of satisfaction before passing out. GAME OVER",
 		choices:[
 			{
@@ -349,7 +358,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Upper Stairway(24)",
+		title:"Upper Stairway",
 		text:"You head upstairs, noticing that the corridor is getting darker as you ascend. When you reach the top of the stairs, the room ahead is pitch-black. Without any way to light the room, you decide that travelling any further would be too dangerous.",
 		choices:[
 			{
@@ -359,7 +368,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Storage Room(25)",
+		title:"Storage Room",
 		text:"Searching through the scattered paper cuttings on the floor, you find one sheet that stands out in particular. This sheet is stained red, stuck to the floor, and marked with ‘CBGEA’.",
 		choices:[
 			{
@@ -369,7 +378,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Upper Stairway(26)",
+		title:"Upper Stairway",
 		text:"You arrive in a pitch black room - lit only by your torch. Looking around you can see two doors, marked ‘Art Room’ and ‘Music Room’. In a corner, you can see a large key floating close to the ground.",
 		choices:[
 			{
@@ -391,7 +400,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Upper Stairway(27)",
+		title:"Upper Stairway",
 		text:"Approaching the floating key, you start to see that it is held in place by a see-through figure of a child huddled in the corner, facing away from you.",
 		choices:[
 			{
@@ -439,7 +448,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Lower Corridor A(31)",
+		title:"Lower Corridor A",
 		text:"Based on other windows you can see, the building you are in appears to have three floors. Nearly all of the windows are similarly boarded up, but you can see another window on the second floor is in a similar state to this one. Nothing about the building particularly stands out, and although you can identify it to be a school, you cannot see any indication of the school’s name.",
 		choices:[
 			{
@@ -449,7 +458,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Art Room(32)",
+		title:"Art Room",
 		text:"You enter the door to the art room. Inside are rows of painting easels circling a statue in the centre of the room. In a corner of the room, you spot some kind of object covered by a sheet. At first inspection, it appears there are no doors other than the one leading back to the stairway.",
 		choices:[
 			{
@@ -466,12 +475,12 @@ var roomArray = [
 			},
 			{
 				text:'Return to stairway',
-				index:26
+				index:24
 			}
 		]
 	},
 	{
-		title:"Classroom 1C(33)",
+		title:"Classroom 1C",
 		text:"Upon closer inspection, what appears to be a rough map of the school has been marked on the floor in chalk.",
 		choices:[
 			{
@@ -505,7 +514,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Art Room(36)",
+		title:"Art Room",
 		text:"Pressing the button, you hear a scraping sound, and look around to see part of the wall sliding to the side to reveal what appears to be another storage room. ",
 		choices:[
 			{
@@ -519,7 +528,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Art Room(37)",
+		title:"Art Room",
 		text:"You approach the object covered by a white sheet, which seems to be roughly the same height as you. Now that you are close, you notice that there is a liquid dripping slowly from underneath the sheet, forming a dark pool at the object’s base. As you get closer, the back of your head seems to feel worse.",
 		choices:[
 			{
@@ -543,7 +552,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Storage Room 2(39)",
+		title:"Storage Room 2",
 		text:"Entering the upper floor storage room, you notice shelves of art supplies and sealed boxes of other school supplies. You should be able to access either the music room or art room from here. Just like the lower floor storage room, the floor is littered with ripped sheets of paper.",
 		choices:[
 			{
@@ -561,7 +570,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(40)",
+		title:"Music Room",
 		text:"The music room is a long, open room of a similar size to the art room. Looking around the room, you can see various musical instruments lining the sides of the room, with a large piano in the centre. The boards on the window at the far end have been partially broken, and the broken-off planks used to board the door leading back to the stairway.",
 		choices:[
 			{
@@ -574,7 +583,7 @@ var roomArray = [
 			},
 			{
 				text:'Leave to the stairway',
-				index:26
+				index:24
 			},
 			{
 				text:"Go to storage room",
@@ -617,7 +626,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(44)",
+		title:"Music Room",
 		text:"You pull over a chair and press a key at random. As soon as you do, the ghost in the stairway, still holding a key, walks through the wall and over to you. The ghost stops on the other side of the piano, and then stares at you, as if expecting something.",
 		choices:[
 			{
@@ -635,7 +644,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(45)",
+		title:"Music Room",
 		text:"Now that the ghost is standing in front of you, you decide to take a good look at it. You can tell that the ghost is that of a young girl of primary school age, dressed in what you assume to be the uniform for the school. You get the impression that the ghost is of someone familiar to you, but you cannot pinpoint how you would recognise her. The ghost does not seem particularly hostile at the moment, so you think you should be able to leave the room safely if needed.",
 		choices:[
 			{
@@ -649,7 +658,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(46)",
+		title:"Music Room",
 		text:"You make an attempt to talk to the ghost, but you get no response. Instead, she just stares at the piano.",
 		choices:[
 			{
@@ -659,7 +668,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(47)",
+		title:"Music Room",
 		text:"You prepare to play the old piano. As you do, you notice the ghost’s expression get a little more intense, giving the impression you will only have one attempt at this. What tune will you play?",
 		choices:[
 			{
@@ -685,7 +694,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(48)",
+		title:"Music Room",
 		text:"As you finish playing the tune, the ghost looks at you with a satisfied expression. She places the key she was carrying on top of the piano, then quickly leaves the room.",
 		choices:[
 			{
@@ -695,7 +704,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(49)",
+		title:"Music Room",
 		text:"As you finish playing the tune, the ghost looks at you with a disappointed expression. The room around you suddenly distorts as you feel a stinging pain in the back of your head and pass out GAME OVER",
 		choices:[
 			{
@@ -705,7 +714,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Music Room(50)",
+		title:"Music Room",
 		text:"Having already appeased the ghost, you decide not to play the piano any more.",
 		choices:[
 			{
@@ -725,7 +734,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Power Room(52)",
+		title:"Power Room",
 		text:"You unlock the Power Room and step inside. The most prominent feature of the room is a large switch, that appears to control the school’s power supply. The room is fairly small, with the only other notable feature being the cabinets full of various files lined up along the back wall.",
 		choices:[
 			{
@@ -753,7 +762,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Power Room(54)",
+		title:"Power Room",
 		text:"Placing your hands on the power switch, you get the feeling that you are about to do something that cannot be undone.",
 		choices:[
 			{
@@ -829,7 +838,7 @@ var roomArray = [
 		]
 	},
 	{
-		title:"Power Room(60)",
+		title:"Power Room",
 		text:"As soon as you flip the power switch, the entire room fills with white light and the loud humming of the generator. From inside the power room, you can hear the large doors to the entrance slowly open. You quickly run out of the room and down the corridor, passing through the two large main doors, out to the dark exterior of the school. Looking back, you can see the young ghost staring at you from a window, before you run into the darkness away from the school. GOOD END",
 		choices:[
 			{
@@ -865,6 +874,24 @@ var roomArray = [
 			{
 				text:'Play Again',
 				index:0
+			}
+		]
+	},
+	{
+		title:"Upper Stairway",
+		text:"You arrive in a pitch black room - lit only by your torch. Looking around you can see two doors, marked ‘Art Room’ and ‘Music Room’. ",
+		choices:[
+			{
+				text:"Enter Art Room",
+				index:32
+			},
+			{
+				text:"Enter Music Room",
+				index:40
+			},
+			{
+				text:'Go downstairs',
+				index:14
 			}
 		]
 	},
