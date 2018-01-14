@@ -48,6 +48,13 @@ function PaperGet(){
 	}
 }
 
+function Glitch(length)
+{
+	document.body.style.backgroundImage = "url(images/staticAnim.gif)";
+	glitch.play();
+	setTimeout(function() {document.body.style.backgroundImage = "url(images/static.png)"}, length);
+}
+
 //Changes backgrounds and sets flags based on room transitions.
 function RoomCheck(roomIndex)
 {
@@ -133,6 +140,7 @@ function RoomCheck(roomIndex)
 			case 11:
 				state1A = 1;
 				document.getElementById('roomImage').style.backgroundImage = "url(images/classLeave.jpg)";
+				chalk.play();
 				break;
 
 			case 12:
@@ -140,6 +148,8 @@ function RoomCheck(roomIndex)
 			case 28:
 			case 38:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/badEnd.png)";
+				staticSound.play();
+				Glitch(23000)
 				bgm.pause();
 				break;
 
@@ -161,6 +171,13 @@ function RoomCheck(roomIndex)
 				document.getElementById('roomImage').style.backgroundImage = "url(images/nurseRoom.png)";
 			}
 				break;
+
+			case 17:
+			case 27:
+			case 37:
+				Glitch(250);
+				break;
+
 			case 18:
 				if (keyStorage == true) {
 					document.getElementById('roomChoices').innerHTML = "";
@@ -221,6 +238,7 @@ function RoomCheck(roomIndex)
 
 			case 25:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/notes.png)";
+				setTimeout(function(){Glitch(450);},3000);
 				break;
 
 			case 26:
@@ -228,10 +246,12 @@ function RoomCheck(roomIndex)
 				document.getElementById('roomImage').style.backgroundImage = "url(images/black.png)";
 				break;
 
+
 			case 30:
 				wind.loop=true;
 				wind.volume=1;
 				wind.play();
+				document.getElementById('roomImage').style.backgroundImage = "url(images/exterior.png)";
 				break;
 
 			case 32:
@@ -242,8 +262,13 @@ function RoomCheck(roomIndex)
 			document.getElementById('roomImage').style.backgroundImage = "url(images/map.png)";
 			break;
 
+			case 36:
+				scrape.play();
+				break;
+
 			case 41:
 				wind.play();
+				document.getElementById('roomImage').style.backgroundImage = "url(images/exterior.png)";
 				if (paper1A == true) {
 					document.getElementById('roomChoices').innerHTML = "";
 					document.getElementById('roomTitle').innerHTML = "Music Room";
@@ -252,11 +277,12 @@ function RoomCheck(roomIndex)
 					document.getElementById('roomChoices').innerHTML += roomchoice;
 				}else {
 					state1A = 2;
+					setTimeout(function(){Glitch(450);},7000);
 				}
 				break;
 
 			case 48:
-			pickup.play();
+				pickup.play();
 				keyPower = true;
 				document.getElementById('invScreen').style.backgroundImage = "url(images/inv4.png)";
 				break;
@@ -287,6 +313,8 @@ function RoomCheck(roomIndex)
 			case 49:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/badEnd.png)";
 				pianoBad.play();
+				staticSound.play();
+				Glitch(23000)
 				bgm.pause();
 				break;
 

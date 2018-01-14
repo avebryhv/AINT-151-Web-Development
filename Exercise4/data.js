@@ -17,6 +17,11 @@ var wind = new Audio("sounds/wind.wav");
 var pickup = new Audio("sounds/pickup.wav");
 var paper = new Audio("sounds/paper.wav");
 var pianoBad = new Audio("sounds/pianoBad.wav");
+var chalk = new Audio("sounds/chalk.wav");
+var scrape = new Audio("sounds/scrape.wav");
+var generator = new Audio("sounds/generator.wav");
+var staticSound = new Audio("sounds/static.mp3");
+var glitch = new Audio("sounds/glitch.wav");
 
 
 
@@ -191,7 +196,7 @@ var roomArray = [
 	},
 	{
 		title:'Classroom 1A',
-		text:'You turn away from the blackboard and continue to investigate the room. As you do, the space around you seems to violently distort, and you find yourself in a pitch-black space, looking directly at what appears to be the ghost of a young girl. The girl seems familiar to you somehow, but you are unable to identify either who she is or the connection between you. As you think about this, the space starts to turn red, and you can feel the back of your head bleeding rapidly. The last thing you get to see before you pass out is the figure of the ghost blankly staring at you. GAME OVER',
+		text:'You turn away from the blackboard and continue to investigate the room. As you do, the space around you seems to violently distort, and you find yourself in a pitch-black space, looking directly at what appears to be the ghost of a young girl. The girl seems familiar to you somehow, but you are unable to identify either who she is or the connection between you. As you think about this, the space starts to turn red, and you can feel the back of your head bleeding rapidly. The last thing you see before you pass out is the figure of the ghost blankly staring at you. GAME OVER',
 		choices:[
 			{
 				text:'Retry',
@@ -859,7 +864,7 @@ var roomArray = [
 	},
 	{
 		title:"Lower Corridor B",
-		text:"Walking out of the power room and towards the entrance, you find the child ghost from earlier, blocking the path between you and the exit. Hoping she can understand, you explain to her that you came here in the first place to look into her disappearance. Although there is no response, it looks as if she can hear you.",
+		text:"Walking out of the power room and towards the entrance, you find the ghost, blocking the path between you and the exit. Hoping she can understand, you explain to her why you came here. Although there is no response, it looks as if she can hear you.",
 		choices:[
 			{
 				text:'Continue',
@@ -869,7 +874,7 @@ var roomArray = [
 	},
 	{
 		title:"Lower Corridor B",
-		text:"You tell the ghost that, if you didn’t return from the investigation, you gave orders for the police to start arresting staff and catch the murderer. Upon assuring her that her killer would be caught, the ghost smiles and starts to disappear. As she does, you notice the building around you start to evaporate, and your vision fading to white. TRUE END",
+		text:"You tell the ghost that, if you didn’t return from the investigation, you gave orders for the police to start arresting staff. Upon assuring her that her killer would be caught, the ghost smiles and starts to disappear. As she does, you notice the building around you start to evaporate, and your vision fading to white. TRUE END",
 		choices:[
 			{
 				text:'Play Again',
