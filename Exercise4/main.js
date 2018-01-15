@@ -75,7 +75,8 @@ function RoomCheck(roomIndex)
 			paperCount = 0;
 			document.getElementById('invScreen').style.backgroundImage = "url(images/inv0.png)";
 			document.getElementById('paperScreen').style.backgroundImage = "url(images/paper0.png)";
-
+			staticSound.load();
+			document.body.style.backgroundImage = "url(images/static.png)";
 			if (playerName == "") {
 				document.getElementById('roomChoices').innerHTML = "";
 				document.getElementById('roomTitle').innerHTML = "Name Required";
@@ -224,6 +225,7 @@ function RoomCheck(roomIndex)
 				pickup.play();
 				keyTorch = true;
 				document.getElementById('invScreen').style.backgroundImage = "url(images/inv3.png)";
+				Glitch(250);
 			}
 				break;
 

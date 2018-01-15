@@ -71,8 +71,7 @@ h3{
     background-size: 100%
 }
 body{
-  background-image: url("images/static.png");
-
+  background-image: url("images/static.png");  
   background-size: 100%;
   background-color: LightGrey;
 
@@ -102,7 +101,7 @@ body{
     font-weight: normal;
     font-size: 50px;
     background-color: black;
-    background-image: url("images/header.jpg");    
+    background-image: url("images/header.jpg");
     color: white;
 }
 
