@@ -41,6 +41,7 @@ function PaperGet(){
 			document.getElementById('roomText').innerHTML += " At the bottom of the page, you see the entry has been signed by '";
 			document.getElementById('roomText').innerHTML += playerName;
 			document.getElementById('roomText').innerHTML += "'";
+			setTimeout(function(){Glitch(450);},1200);
 			break;
 
 		default:
@@ -107,6 +108,7 @@ function RoomCheck(roomIndex)
 			bgm.volume=1;
 			bgm2.pause();
 			wind.pause();
+			document.body.style.backgroundImage = "url(images/static.png)";
 			break;
 
 		case 7:
@@ -308,6 +310,7 @@ function RoomCheck(roomIndex)
 				bgm.volume = 0;
 				bgm2.loop=true;
 				bgm2.play();
+
 				break;
 
 			case 49:
@@ -346,6 +349,7 @@ function RoomCheck(roomIndex)
 				bgm.volume = 0;
 				bgm2.loop=true;
 				bgm2.play();
+				document.body.style.backgroundImage = "url(images/staticAnim.gif)";
 				break;
 
 			case 59:
@@ -358,12 +362,24 @@ function RoomCheck(roomIndex)
 				if (paperCount == 4) {
 					SelectRoom(61);
 				}else {
+					bgm.pause();
 					document.getElementById('roomImage').style.backgroundImage = "url(images/goodEnd.png)";
 				}
 				break;
 
+			case 61:
+				document.getElementById('roomImage').style.backgroundImage = "url(images/black.png)";
+				generator.play();
+				break;
+
+			case 62:
+				document.getElementById('roomImage').style.backgroundImage = "url(images/corridor.jpg)";
+				generator.pause();
+				break;
+
 			case 63:
 				document.getElementById('roomImage').style.backgroundImage = "url(images/trueEnd.png)";
+				bgm.pause();
 				break;
 	}
 
