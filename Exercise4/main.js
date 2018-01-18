@@ -1,6 +1,7 @@
 function OnLoad()
 {
 	SelectRoom(0);
+	loadPage(event, 'Home');
 }
 
 function SelectRoom(roomIndex)
