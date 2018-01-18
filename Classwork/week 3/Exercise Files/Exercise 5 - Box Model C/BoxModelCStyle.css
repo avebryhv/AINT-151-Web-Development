@@ -1,0 +1,41 @@
+#container{
+    height: 343px;
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+#header{
+    height: 70px;
+    width: 900px;
+    vertical-align: 70px;
+    background-color: LightGrey;
+    margin-bottom: 5px;
+    line-height: 70px;
+}
+.leftbox-box{
+    float: left;
+    height: 81px;
+    width: 81px;
+    background-color: LightGrey;
+    margin: 5px 0px 5px 0px;
+    line-height: 81px;
+}
+.box{
+    float: left;
+    height: 81px;
+    width: 81px;
+    background-color: LightGrey;
+    margin: 5px 0px 5px 10px;
+    line-height: 81px;
+}
+.clear{
+    clear: both;
+}
+#footer{
+    height: 30px;
+    width: 900px;
+    background-color: LightGrey;
+    margin-top: 5px;
+    float: left;
+    line-height: 30px;
+}

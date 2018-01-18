@@ -1,0 +1,45 @@
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+#menu>li {
+float: left;
+position: relative;
+display: block;
+background-color: grey;
+margin: 1px;
+
+}
+
+#menu>li>a {
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+#menu>li>ul {
+  display: none;
+  position: absolute;
+}
+
+#menu>li:hover ul {
+  display: block;
+  background-color: grey;
+  list-style: none;
+  width: 200px;
+}
+
+#menu>li>ul>li a {
+  color: white;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+
+#menu>li>ul>li a:hover {
+  color: black;
+  display: block;
+  background-color: LightGrey;
+  text-decoration: none;
+}
